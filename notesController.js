@@ -20,6 +20,24 @@ class NotesController {
         }
     }
 
+    getNotes() {
+        this.fetchJSON()
+        return this.toString()
+    }
+    toString = () => {
+        this.fetchJSON()
+        if (this.notes.data.length == 0) {
+            return 'No notes found...'
+        }
+        else {
+            let notes = ''
+            this.notes.data.forEach(note => {
+                notes += `\n${chalk.blue('Title')}: ${note.title}\n${chalk.blue('Body')}: ${note.body}\n`
+            });
+            return notes
+        }
+    }
+
     addNote(title, body) {
         this.fetchJSON()
         let duplicates = this.notes.data.filter(note => note.title == title)

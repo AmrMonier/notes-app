@@ -23,7 +23,14 @@ yargs.command({
     }
 })
 
-
+yargs.command({
+    command: 'list',
+    describe: 'list all existing notes',
+    handler: () => {
+        let notes = notesStorage.getNotes()
+        console.log(notes);
+    }
+})
 
 yargs.parse()
 
