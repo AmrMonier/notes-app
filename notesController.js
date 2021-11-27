@@ -24,6 +24,15 @@ class NotesController {
         this.fetchJSON()
         return this.toString()
     }
+    findNote(title) {
+        this.fetchJSON()
+        let note = this.notes.data.find(note => note.title === title)
+        if (note)
+            return `\n${chalk.blue('Title')}: ${note.title}\n${chalk.blue('Body')}: ${note.body}\n`
+        else
+            return chalk.red(`can't find a note with this title`)
+    }
+
     toString = () => {
         this.fetchJSON()
         if (this.notes.data.length == 0) {

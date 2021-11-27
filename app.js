@@ -32,6 +32,21 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: 'read',
+    describe: 'reading a note',
+    builder: {
+        title: {
+            describe: 'read a specific note',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
+        console.log(notesStorage.findNote(argv.title));;
+    }
+})
+
 yargs.parse()
 
 
