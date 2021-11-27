@@ -59,6 +59,14 @@ class NotesController {
             console.log(chalk.bgRed('ERROR: '), chalk.red('this title already exist'))
         }
     }
+
+    removeNote(title) {
+        this.fetchJSON()
+        let notesCount = this.notes.data.length
+        this.notes.data = this.notes.data.filter(note => note.title !== title)
+        this.dumpJson()
+        return notesCount === this.notes.data.length ? chalk.red('title not found') : chalk.green('note deleted successfully')
+    }
 }
 
 module.exports = NotesController

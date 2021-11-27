@@ -47,6 +47,21 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command: 'remove',
+    describe: 'Removing a note',
+    builder: {
+        title: {
+            describe: 'note title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
+        console.log(notesStorage.removeNote(argv.title))
+    }
+})
+
 yargs.parse()
 
 
