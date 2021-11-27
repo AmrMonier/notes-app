@@ -40,8 +40,8 @@ class NotesController {
 
     addNote(title, body) {
         this.fetchJSON()
-        let duplicates = this.notes.data.filter(note => note.title == title)
-        if (duplicates.length === 0) {
+        let duplicateNote = this.notes.data.find(note => note.title == title)
+        if (!duplicateNote) {
             this.notes.data.push({ title, body })
             this.dumpJson()
             console.log(chalk.bgGreen('Success: '), chalk.green('Note have been added'))
